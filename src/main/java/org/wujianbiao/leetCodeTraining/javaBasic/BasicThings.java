@@ -1,5 +1,7 @@
 package org.wujianbiao.leetCodeTraining.javaBasic;
 
+import java.util.ArrayList;
+
 /**
  * @Desc 随时放一些零碎的知识点或者测试，大块的内容需要整理为单独的类
  * @Author wujianbiao
@@ -18,8 +20,9 @@ public class BasicThings {
 
     public static void main(String[] args) {
         // test1(1);
-        testInteger(10);
-        testInteger(180);
+        // testInteger(10);
+        // testInteger(180);
+        testArrayLength();
     }
 
     private static void test1(int value) {
@@ -28,6 +31,12 @@ public class BasicThings {
 
         System.out.println(a);
         System.out.println(b);
+    }
+
+    private static void testArrayLength() {
+        String[] arr = new String[10];
+        arr[1] = "sss";
+        System.out.println(arr.length);
     }
 
     private static void testInteger(int value) {
