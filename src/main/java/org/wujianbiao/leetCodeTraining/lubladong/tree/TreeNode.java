@@ -10,6 +10,12 @@ public class TreeNode {
     TreeNode left;
     TreeNode right;
 
+
+    /**
+     * 非二叉树常规字段，部分题型下使用
+     */
+    TreeNode next;
+
     TreeNode() {}
 
     TreeNode(int val) {
