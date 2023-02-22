@@ -73,6 +73,11 @@ public class TreeIterator {
         return leftCount + rightCount + 1;
     }
 
+    /**
+     * 打印每一个节点所在的层数
+     * ps.这个方法没有返回值，没有记录层数信息，其实添加一个外部变量，在 level++ 之后与变量对比，取大的那一个就是最大深度了。
+     * @param root
+     */
     private void printEachLevel(TreeNode root) {
         if (root == null) {
             return;
