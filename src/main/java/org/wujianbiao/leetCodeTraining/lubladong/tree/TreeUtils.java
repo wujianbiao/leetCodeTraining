@@ -1,9 +1,15 @@
 package org.wujianbiao.leetCodeTraining.lubladong.tree;
 
-import org.wujianbiao.leetCodeTraining.lubladong.tree.TreeNode;
-
 /**
  * @Desc
+ *            1
+ *           / \
+ *          2   3
+ *         / \   \
+ *        4   5   6
+ *               /
+ *              7
+ *
  * @Author wujianbiao
  * @CreateTime 2022/6/11 下午10:24
  **/
@@ -34,7 +40,7 @@ public class TreeUtils {
         // 3--> null，6
         treeNode3.right = treeNode6;
 
-        // 7-->7，null
+        // 6-->7，null
         treeNode6.left = treeNode7;
 
         return treeNode1;
