@@ -88,6 +88,5 @@ public class TreeIterator2 {
 
         System.out.println("--------------分割线--------------");
         treeIterator2.traverse(tree, 1);
-
     }
 }
