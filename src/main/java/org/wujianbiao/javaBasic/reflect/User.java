@@ -1,4 +1,4 @@
-package org.wujianbiao.leetCodeTraining.javaBasic.reflect;
+package org.wujianbiao.javaBasic.reflect;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package org.wujianbiao.leetCodeTraining.javaBasic.thread;
+package org.wujianbiao.javaBasic.thread;
 
 /**
  * @Desc

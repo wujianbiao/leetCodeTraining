@@ -1,4 +1,4 @@
-package org.wujianbiao.leetCodeTraining.javaBasic.reflect;
+package org.wujianbiao.javaBasic.reflect;
 
 import java.lang.reflect.Constructor;
 
@@ -13,7 +13,7 @@ public class ReflectTest {
         // User user = new User(12, "lll");
         // System.out.println(user.getClass());
         // System.out.println(User.class);
-        // System.out.println(Class.forName("org.wujianbiao.leetCodeTraining.javaBasic.reflect.User"));
+        // System.out.println(Class.forName("org.wujianbiao.reflect.javaBasic.User"));
         //
         // // 获取全限定名称
         // System.out.println(user.getClass().getName());
@@ -40,7 +40,7 @@ public class ReflectTest {
     }
 
     private static void testConstructor() throws Exception {
-        Class<?> clazz = Class.forName("org.wujianbiao.leetCodeTraining.javaBasic.reflect.User");
+        Class<?> clazz = Class.forName("org.wujianbiao.javaBasic.reflect.User");
 
 
         Constructor cs1 = clazz.getConstructor(String.class);

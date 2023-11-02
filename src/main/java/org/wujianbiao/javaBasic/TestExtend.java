@@ -1,4 +1,4 @@
-package org.wujianbiao.leetCodeTraining.javaBasic;
+package org.wujianbiao.javaBasic;
 
 /**
  * @Desc
