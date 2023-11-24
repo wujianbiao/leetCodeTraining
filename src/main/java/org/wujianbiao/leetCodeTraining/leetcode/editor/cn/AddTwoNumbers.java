@@ -62,6 +62,50 @@ public class AddTwoNumbers {
      */
     class Solution {
         public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+
+            // 方法二：遍历任意一个链表，每次都将该节点的数字相加，额外记录进位（+0 or +1）。当其中一个链表遍历完时，如果另一个链表仍然还有节点，则直接挂上即可。
+            return null;
+        }
+
+
+        /**
+         * 方法一：分别遍历两个链表，得出两个数字，然后相加，并将相加后的数组再转化为链表。
+         * 
+         * @param l1
+         * @param l2
+         * @return
+         */
+        public ListNode functionA(ListNode l1, ListNode l2) {
+            if (l1 == null && l2 == null) {
+                return null;
+            }
+
+            int plus1 = 0;
+            int totalNum1 = 0;
+            while (l1.next != null) {
+                int value = l1.getVal();
+                int plusTimes = (int) Math.pow(10, plus1);
+                totalNum1 += value * plusTimes;
+                plus1++;
+            }
+
+            int plus2 = 0;
+            int totalNum2 = 0;
+            while (l2.next != null) {
+                int value = l2.getVal();
+                int plusTimes = (int) Math.pow(10, plus2);
+                totalNum2 += value * plusTimes;
+                plus2++;
+            }
+
+
+            int plus3 = 0;
+            int sumNum = totalNum1 + totalNum2;
+            while (sumNum > 0) {
+                int plusTime = (int) Math.pow(10, plus3);
+                int num = sumNum % plusTime;
+            }
+
             return null;
         }
     }

@@ -1,8 +1,6 @@
 package org.wujianbiao.codingFun.threadLearn;
 
 
-import java.util.concurrent.locks.Lock;
-
 /**
  * @Desc
  * @Author wujianbiao
