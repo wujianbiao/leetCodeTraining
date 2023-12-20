@@ -1,0 +1,77 @@
+> Problem: [128. 最长连续序列](https://leetcode.cn/problems/longest-consecutive-sequence/description/)
+
+[TOC]
+
+# 思路
+
+> 容易想到利用排序的方法简化题目，但sort()方法不符合时间复杂度的要求，联想到JavaScript对象枚举属性的顺序恰好可以实现对数字的排序，并符合时间复杂度O(n)的要求。
+> Javascript对象属性枚举顺序如下：
+> 1.首先按从小到大顺序枚举属性名为0 -- 2的32次方减2 的整数属性，这些特殊的属性名也被称为索引，这也是数组索引的范围。其中obj[1]等价于obj["1"]等价于obj[1.00]。
+> 2.按添加顺序枚举非Symbol属性。
+> 3.按添加顺序枚举Symbol属性。
+
+# 解题方法
+
+> 1.负数不能作为索引，所以将原数组中大于等于0的数和负数分别筛选出来组成新数组。
+> 2.将大于等于0的数作为属性名添加到一个空对象中，属性值任意。枚举该对象自有属性的属性名并转化为数字即完成排序。
+> 3.将负数数组中的值转化为对应正数并以相同方法排序后反转顺序并复原为负数。
+> 4.拼接两个子数组即得到排序后的数组。
+> 5.遍历数组查找最长连续序列。
+> 以上步骤时间复杂度均为O(n)，最终时间复杂度为O(n)
+
+# 复杂度
+
+- 时间复杂度:
+
+> 时间复杂度： $O(n)$
+
+- 空间复杂度:
+
+> 空间复杂度： $O(n)$
+
+# Code
+
+* []
+
+```JavaScript
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var longestConsecutive = function(nums) {
+  nums = Array.from(new Set(nums));
+  let largeArr = [];   //排序并存放大于等于0的数
+  let smallArr = [];   //排序并存放小于0的数
+  let a = {};
+  nums.forEach(value=>{
+      if(value>=0){
+          a[value] = 1;
+      }else{
+          smallArr.push(value);
+      }
+  });
+  largeArr = Object.keys(a).map(item=>Number(item));  //通过对象的属性枚举顺序排序大于等于0的部分
+  let b = {};
+  smallArr.forEach(item=>b[0-item]=1);                
+  smallArr = Object.keys(b).map(item=>0 - Number(item)).reverse();//负数转化为正数排序后还原
+  nums = smallArr.concat(largeArr);  //拼接得到排序后的完整数组
+    
+  let max = 1;
+  let count = 1; 
+    if(nums.length === 0){
+        return 0;
+    }
+    nums.reduce((pre,cur)=>{
+        if(cur-pre === 1){
+            count++;
+            max = Math.max(count,max);
+        } else {
+            count = 1;
+        }
+        return cur;
+    },nums[0])
+    return max;
+};
+```
+
