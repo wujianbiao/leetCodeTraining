@@ -1,4 +1,4 @@
-package org.wujianbiao.leetCodeTraining.lubladong.tree;
+package org.wujianbiao.leetCodeTraining.leetcode.editor.cn;
 
 import lombok.Data;
 

@@ -57,8 +57,8 @@ package org.wujianbiao.leetCodeTraining.leetcode.editor.cn;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
-import javax.swing.tree.TreeNode;
 
 public class BinaryTreeInorderTraversal {
     public static void main(String[] args) {
@@ -90,7 +90,54 @@ public class BinaryTreeInorderTraversal {
      */
     class Solution {
         public List<Integer> inorderTraversal(TreeNode root) {
-            return new ArrayList<>();
+            if (root == null) {
+                return new ArrayList<>();
+            }
+
+            List<Integer> result = new ArrayList<>();
+
+            // 递归
+            // preorder(root, result);
+
+            // 迭代遍历
+            Stack<TreeNode> stack = new Stack<>();
+            TreeNode cur = root;
+            // 当 root!=null 时说明还没有遍历到叶子节点
+            while (cur != null || !stack.isEmpty()) {
+                // 一直往左找到左子树的最底下一个节点
+                if (cur != null) {
+                    stack.push(cur);
+                    cur = cur.left;
+                } else {
+                    // cur=null 时找到了叶子节点，此时开始处理栈中的元素
+                    // 每弹出一个元素后都会重新走一遍 while 的逻辑，当弹出的为 叶子节点时，cur.right==null
+                    // 因此在下一轮 while 的时候还会继续走到这个 else 的弹出逻辑中。
+                    // 当cur.right!=null 时，下一轮 while 循环会开始处理右子树。整体的处理逻辑就是左根右。
+                    cur = stack.pop();
+                    result.add(cur.val);
+                    cur = cur.right;
+                }
+            }
+
+            return result;
+        }
+
+
+        /**
+         * 中序遍历：左根右
+         * 递归
+         * 
+         * @param node
+         * @param result
+         */
+        private void preorder(TreeNode node, List<Integer> result) {
+            if (node == null) {
+                return;
+            }
+
+            preorder(node.left, result);
+            result.add(node.val);
+            preorder(node.right, result);
         }
     }
     // leetcode submit region end(Prohibit modification and deletion)
