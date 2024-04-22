@@ -63,13 +63,6 @@ import java.util.Stack;
 public class BinaryTreeInorderTraversal {
     public static void main(String[] args) {
         Solution solution = new BinaryTreeInorderTraversal().new Solution();
-
-        for (int i = 0; i < 10; ++i) {
-            System.out.println(i);
-            if (i == 5) {
-                System.out.println("到 5 了");
-            }
-        }
     }
 
     // leetcode submit region begin(Prohibit modification and deletion)

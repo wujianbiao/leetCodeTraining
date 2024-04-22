@@ -64,7 +64,7 @@ public class BinaryTreeLevelOrderTraversal {
      * }
      */
     class Solution {
-        public List<List<Integer>> levelOrder(TreeNode root) {
+        public List<List<Integer>> levelOrder2(TreeNode root) {
             if (root == null) {
                 return new ArrayList<>();
             }
@@ -101,6 +101,37 @@ public class BinaryTreeLevelOrderTraversal {
 
             return result;
 
+        }
+
+        public List<List<Integer>> levelOrder(TreeNode treeNode) {
+            if (treeNode == null) {
+                return new ArrayList<>();
+            }
+
+            // 使用一个队列来接收每一层的节点。
+            Queue<TreeNode> queue = new LinkedList<>();
+            queue.offer(treeNode);
+
+            List<List<Integer>> result = new ArrayList<>();
+            while (!queue.isEmpty()) {
+                int queueSize = queue.size();
+                List<Integer> each = new ArrayList<>();
+                for (int i = 0; i < queueSize; i++) {
+                    TreeNode current = queue.poll();
+                    each.add(current.val);
+
+                    if (current.left != null) {
+                        queue.offer(current.left);
+                    }
+
+                    if (current.right != null) {
+                        queue.offer(current.right);
+                    }
+                }
+                result.add(each);
+            }
+
+            return result;
         }
     }
     // leetcode submit region end(Prohibit modification and deletion)
