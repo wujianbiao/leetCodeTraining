@@ -108,6 +108,7 @@ public class BinaryTreePreorderTraversal {
                     result.add(node.val);
                 }
 
+                // 前序：根左右，在压入栈的时候顺序正好相反，先压右孩子再压左孩子。
                 stack.push(node.right);
                 stack.push(node.left);
             }
