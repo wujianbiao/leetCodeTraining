@@ -56,66 +56,40 @@ public class FindFirstAndLastPositionOfElementInSortedArray {
                 return new int[] {-1, -1};
             }
 
-            // 分两次查找，分别找出第一个和最后一个出现的位置
-            int left = searchLeft(nums, target);
-            if (left == -1) {
-                return new int[] {-1, -1};
-            }
 
-            int right = searchRight(nums, target);
-            return new int[] {left, right};
-        }
 
-        private int searchLeft(int[] nums, int target) {
             int left = 0;
             int right = nums.length - 1;
-
             while (left <= right) {
-                int mid = left + (right - left) / 2;
-                if (nums[mid] < target) {
+                int mid = (left + right) / 2;
+                int midValue = nums[mid];
+                // 找到了其中一个 target ，但是
+                // 可能是第一个 target，可能是最后一个，也可能是中间的一个。
+                if (midValue == target) {
+                    int start = mid;
+                    int end = mid;
+                    while (mid >= 0) {
+                        mid--;
+                        if (nums[mid] == target) {
+                            start = mid;
+                        }
+                    }
+
+                    while (mid <= right) {
+                        mid++;
+                        end = mid;
+                    }
+                    return new int[] {start, end};
+                }
+
+                if (target > midValue) {
                     left = mid + 1;
-                } else if (nums[mid] > target) {
-                    right = mid - 1;
-                } else if (nums[mid] == target) {
-                    // 找第一个出现的位置时，移动右指针往左靠
+                } else {
                     right = mid - 1;
                 }
             }
 
-            // 当 target 大于数组中的所有元素时，左指针可能移动到右边界之外。【2，2，2】 3
-            if (left < 0 || left >= nums.length) {
-                return -1;
-            }
-
-            if (nums[left] == target) {
-                return left;
-            }
-
-            return -1;
-        }
-
-        private int searchRight(int[] nums, int target) {
-            int left = 0;
-            int right = nums.length - 1;
-
-
-            while (left <= right) {
-                int mid = left + (right - left) / 2;
-                if (nums[mid] < target) {
-                    left = mid + 1;
-                } else if (nums[mid] > target) {
-                    right = mid - 1;
-                } else if (nums[mid] == target) {
-                    // 找最后出现的位置时，移动左指针往右靠
-                    left = mid + 1;
-                }
-            }
-
-            if (nums[right] == target) {
-                return right;
-            }
-
-            return -1;
+            return new int[] {-1, -1};
         }
     }
     // leetcode submit region end(Prohibit modification and deletion)

@@ -64,8 +64,8 @@ package org.wujianbiao.leetCodeTraining.leetcode.editor.cn;
 public class RemoveElement {
     public static void main(String[] args) {
         Solution solution = new RemoveElement().new Solution();
-        // int[] nums = new int[] {0, 1, 2, 2, 3, 0, 4, 2};
-        // solution.removeElement2(nums, 2);
+        int[] nums = new int[] {0, 1, 2, 2, 3, 0, 4, 2};
+        System.out.println(solution.removeElement2(nums, 2));
     }
 
     // leetcode submit region begin(Prohibit modification and deletion)
@@ -80,6 +80,7 @@ public class RemoveElement {
                 return 0;
             }
 
+            // {0, 1, 2, 7, 3, 0, 4, 2}; 2
             int left = 0;
             int right = nums.length - 1;
             while (left <= right) {
@@ -103,27 +104,30 @@ public class RemoveElement {
 
             return left;
         }
-    }
 
-    public int removeElement2(int[] nums, int val) {
+
 
         // 3. 快慢指针
-        if (nums.length == 0) {
-            return 0;
-        }
-        int slow = 0;
-        for (int fast = 0; fast < nums.length - 1; fast++) {
-            // 当 fast 为 val 时一直前进，遇到不为 val 时再进行赋值
-            if (nums[fast] != val) {
-                nums[slow] = nums[fast];
-                slow++;
+        public int removeElement2(int[] nums, int val) {
+            if (nums.length == 0) {
+                return 0;
             }
+
+            // {0, 1, 2, 2, 3, 0, 4, 2}; 2
+            int slow = 0;
+            // 为什么是小于 length -1
+            for (int fast = 0; fast <= nums.length - 1; fast++) {
+                // 当 fast 为 val 时一直前进，遇到不为 val 时再进行赋值
+                if (nums[fast] != val) {
+                    nums[slow] = nums[fast];
+                    slow++;
+                }
+            }
+
+            // 当 fast 右移到数组末尾时，slow 一定停止在最后一个不为 val 的下一位，即元素个数。
+            return slow;
         }
-
-        // 当 fast 右移到数组末尾时，slow 一定停止在最后一个不为 val 的下一位，即元素个数。
-        return slow;
     }
-
 }
 // leetcode submit region end(Prohibit modification and deletion)
 

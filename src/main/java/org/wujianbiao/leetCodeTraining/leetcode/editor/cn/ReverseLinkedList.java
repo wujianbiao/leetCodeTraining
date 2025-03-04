@@ -45,6 +45,7 @@ package org.wujianbiao.leetCodeTraining.leetcode.editor.cn;
 // Related Topics 递归 链表 👍 3484 👎 0
 
 
+import java.util.Stack;
 
 public class ReverseLinkedList {
     public static void main(String[] args) {
@@ -71,21 +72,21 @@ public class ReverseLinkedList {
             }
 
             // 迭代法
-            // ListNode pre = null;
-            // ListNode cur = head;
-            // ListNode next;
-            //
-            // while (cur != null) {
-            // next = cur.next;
-            // cur.next = pre;
-            // pre = cur;
-            // cur = next;
-            // }
-            //
-            // return pre;
+            ListNode pre = null;
+            ListNode cur = head;
+            ListNode next;
+
+            while (cur != null) {
+                next = cur.next;
+                cur.next = pre;
+                pre = cur;
+                cur = next;
+            }
+
+            return pre;
 
             // 递归
-            return reverse(null, head);
+            // return reverse(null, head);
         }
 
         /**

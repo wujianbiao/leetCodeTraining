@@ -64,26 +64,37 @@ public class SearchInsertPosition {
 
             int left = 0;
             int right = nums.length - 1;
-
-            int mid = 0;
             while (left <= right) {
-                mid = left + (right - left) / 2;
-                if (nums[mid] < target) {
-                    left = mid + 1;
-                } else if (nums[mid] > target) {
-                    right = mid - 1;
-                } else if (nums[mid] == target) {
+                int mid = (left + right) / 2;
+                int midValue = nums[mid];
+                if (midValue == target) {
                     return mid;
+                }
+
+                if (midValue > target) {
+                    right = mid - 1;
+                } else {
+                    left = mid + 1;
                 }
             }
 
-            // 如果执行到这一步，说明数组中没有 target 值，注意此时 right 的位置
+            // 走到这，说明数组中没有 target 值。
+            if (left > nums.length - 1) {
+                return nums.length;
+            }
 
+            return left;
+
+
+            // 如果执行到这一步，说明数组中没有 target 值。
+            // 此时的核心是以单边为基准，比如以 right 指针的位置为主，会有如下几种情况：
             // 1. target 比数组中所有的数字都小，此时 right 已经左移到了 -1 位。
             // 2. target 比数组中所有的数字都大，此时 right 已经移动到了数组的末尾，left 已经超过 right 到了nums.length
             // 3. target 有值，直接返回，这是最常规的二分。
             // 4. target 在数组的中间某一个位置插入，while 循环结束的时候，right 在 left 的左边，插入的位置既是 right 的下一位。可以画图看一下几种情况。
-            return right + 1;
+            // return right + 1;
+
+            // 如果以 left 为准，也可以穷举一下返回情况。
         }
     }
     // leetcode submit region end(Prohibit modification and deletion)

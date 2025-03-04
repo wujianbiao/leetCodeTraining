@@ -46,14 +46,19 @@ public class BinarySearch {
                 return -1;
             }
 
-            // 数组元素个数是奇数还是偶数，这个重要吗？
+            // left right 两个指针，当 left < right 时循环
             int left = 0;
             int right = nums.length - 1;
+
             while (left <= right) {
-                int mid = left + (right - left) / 2;
-                if (nums[mid] == target) {
+                int mid = (left + right) / 2;
+
+                int midValue = nums[mid];
+                if (midValue == target) {
                     return mid;
-                } else if (nums[mid] > target) {
+                }
+
+                if (midValue > target) {
                     right = mid - 1;
                 } else {
                     left = mid + 1;
