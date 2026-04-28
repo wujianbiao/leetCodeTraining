@@ -1,9 +1,8 @@
 package org.wujianbiao.leetCodeTraining.lubladong;
 
+import java.lang.Object;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
-
-import org.omg.CORBA.Object;
 
 /**
  * @Desc
