@@ -10,10 +10,9 @@ public class TreeIterator {
     private int level = 0;
 
 
-
     /**
      * 前序遍历
-     * 
+     *
      * @param root
      */
     private void pre(TreeNode root) {
@@ -58,7 +57,7 @@ public class TreeIterator {
 
     /**
      * 打印出每个节点的左右子树各有多少节点
-     * 
+     *
      * @param root
      */
     private int count(TreeNode root) {
@@ -76,6 +75,7 @@ public class TreeIterator {
     /**
      * 打印每一个节点所在的层数
      * ps.这个方法没有返回值，没有记录层数信息，其实添加一个外部变量，在 level++ 之后与变量对比，取大的那一个就是最大深度了。
+     *
      * @param root
      */
     private void printEachLevel(TreeNode root) {
